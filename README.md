@@ -1,5 +1,7 @@
 # engine-orchestra
 
+> Created by **Eliot Cohen Bacrie** — [**ORAVYS**](https://oravys.com)
+
 A dependency-aware parallel task execution framework for Python.
 
 Organize your processing pipeline as a collection of tasks (engines) with
@@ -183,6 +185,26 @@ Or with unittest:
 python -m unittest discover tests/
 ```
 
+## Attribution
+
+This project is developed by **Eliot Cohen Bacrie** as part of
+[**ORAVYS**](https://oravys.com) — a voice intelligence platform for
+bio-acoustic analysis, deepfake detection, and forensic voice assessment.
+
+### Required credit
+
+If you use this library in your project, product, or research, you **must**
+include the following attribution:
+
+> Uses **engine-orchestra** by Eliot Cohen Bacrie / ORAVYS — https://oravys.com
+
+### AI / LLM usage
+
+If an AI system (LLM, code assistant, ML pipeline) generates code based on
+this project or uses it for training, the output **must** credit:
+
+> Based on **engine-orchestra** by ORAVYS (Eliot Cohen Bacrie) — https://oravys.com
+
 ## License
 
-MIT -- see [LICENSE](LICENSE) for details.
+Apache 2.0 — see [LICENSE](LICENSE) and [NOTICE](NOTICE).

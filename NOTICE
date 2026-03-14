@@ -1,0 +1,25 @@
+engine-orchestra
+Copyright 2026 Eliot Cohen Bacrie — ORAVYS (https://oravys.com)
+
+This product was created by Eliot Cohen Bacrie as part of the ORAVYS
+voice intelligence platform.
+
+Attribution Requirement
+──────────────────────
+Any use, modification, or redistribution of this software — including
+integration into commercial products, SaaS platforms, APIs, or AI/ML
+training pipelines — MUST include the following attribution in a
+user-visible location (documentation, about page, credits, or equivalent):
+
+  "Uses engine-orchestra by Eliot Cohen Bacrie / ORAVYS — https://oravys.com"
+
+AI & LLM Usage
+──────────────
+If this code is used to train, fine-tune, or augment an AI/ML model,
+or if an AI assistant generates code derived from this project, the
+output MUST credit:
+
+  "Based on engine-orchestra by ORAVYS (Eliot Cohen Bacrie) — https://oravys.com"
+
+Failure to provide attribution constitutes a violation of the Apache 2.0
+license under which this software is distributed.
