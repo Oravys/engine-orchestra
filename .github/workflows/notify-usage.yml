@@ -25,16 +25,42 @@ jobs:
               body = `**${user}** forked **${repo}**\n\n` +
                      `Fork: ${forkUrl}\n` +
                      `Profile: https://github.com/${user}\n\n` +
+                     `@Oravys — new adoption detected.\n\n` +
                      `> Apache 2.0 + NOTICE attribution is required for any use.`;
             } else if (event === 'watch') {
               title = `New star by @${user}`;
-              body = `**${user}** starred **${repo}**\n\nProfile: https://github.com/${user}`;
+              body = `**${user}** starred **${repo}**\n\n` +
+                     `Profile: https://github.com/${user}\n\n` +
+                     `@Oravys — new interest detected.`;
             }
 
-            await github.rest.issues.create({
+            const issue = await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
               title: title,
               body: body,
-              labels: ['usage-tracking']
+              labels: ['usage-tracking'],
+              assignees: ['Oravys']
             });
+
+      - name: Send email notification
+        if: ${{ vars.NOTIFY_EMAIL != '' }}
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.sendgrid.net
+          server_port: 587
+          username: apikey
+          password: ${{ secrets.SENDGRID_API_KEY }}
+          from: ORAVYS Tracker <noreply@oravys.com>
+          to: ${{ vars.NOTIFY_EMAIL }}
+          subject: "${{ github.event_name == 'fork' && format('Fork: {0} forked {1}', github.actor, github.repository) || format('Star: {0} starred {1}', github.actor, github.repository) }}"
+          body: |
+            ${{ github.event_name == 'fork' && format('{0} forked {1}
+
+            Fork: {2}
+            Profile: https://github.com/{0}
+
+            Apache 2.0 + NOTICE attribution is required.
+            Check: https://github.com/{1}/issues', github.actor, github.repository, github.event.forkee.html_url) || format('{0} starred {1}
+
+            Profile: https://github.com/{0}', github.actor, github.repository) }}
